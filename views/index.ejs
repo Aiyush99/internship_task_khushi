@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function validateForm() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const age = document.getElementById("age").value;
+            const terms = document.getElementById("terms").checked;
+
+            if(!name || !email || !age || !terms) {
+                alert("all field are required")
+                return false;
+            }
+            if(isNaN(age) || age <=0) {
+                alert("please enter valide age")
+                return false
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1> User input form</h1>
+    <form action="/submit" method="POST" onsubmit="return validateForm()">
+        <label type="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+
+        <label type="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+
+        <label type="age">age:</label>
+        <input type="number" id="age" name="age" required>
+        <br>
+
+        <input type="checkbox" id="terms" name="terms" value="accepted">
+        <br>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
